@@ -1,0 +1,87 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+            @*@Html.ActionLink("أهلا " + User.Identity.GetUserName() , "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+
+            @*<div class="btn-group open">
+                        <a href="#" class="btn btn-primary">"اهلا "+ @User.Identity.GetUserName()</a>
+                        <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Manage/ChangePassword">
+                                <i class="fa fa-wrench"></i>
+                                تغيير كلمة السر </a></li>
+
+                        </ul>
+                    </div>*@
+
+
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">
+
+                    <i class="fa fa-mail-reply"></i>
+
+                    خروج
+                </a>
+            </li>
+
+            @if (User.IsInRole("AdminUser") || User.IsInRole("PowerUser"))
+            {
+                <li>
+                    <a href="/Admin">
+
+                        <i class="fa fa-id-card"></i>
+
+                        أدارة المستخدمين
+                    </a>
+                </li>
+            }
+
+            <li>
+                @*@Html.ActionLink("مستحقاتى " , "Contact", "Home")*@
+                <a href="/Home/Contact">
+                    <i class="fa fa-money"></i>
+                    مستحقاتى
+
+
+
+                </a>
+            </li>
+
+
+            <li class="dropdown ">
+                <a href="#" class="dropdown-toggle"
+                   data-toggle="dropdown"
+                   role="button"
+                   aria-expanded="True">
+                    <span class="caret"></span>
+                    اهلا
+                    @User.Identity.GetUserName()
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="/Manage/ChangePassword">
+                            <i class="fa fa-wrench"></i>
+                            تغيير كلمة المرور
+
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("تسجيل", "Register", "Account", null, new {id = "registerLink"})</li>
+        <li>@Html.ActionLink("دخول", "Login", "Account", null, new {id = "loginLink"})</li>
+    </ul>
+}

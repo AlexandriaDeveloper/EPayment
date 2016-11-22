@@ -1,0 +1,94 @@
+﻿@model AlexFacultyOfMed.ViewModel.AdminVM.UserDetailsVM
+@{
+    ViewBag.Title = "بيانات الموظف";
+}
+
+<h2>بيانات الموظف</h2>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 well bs-component">
+
+
+        @using (Html.BeginForm("UserDetails", "Admin", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>
+                    <i class="fa fa-user-plus"></i>
+                    تعديل بيانات موظف
+
+                </legend>
+
+                <hr/>
+                @Html.ValidationSummary("", new {@class = "text-danger"})
+
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.DisplayFor(m => m.NationalId, new {@class = "form-control"})
+                        @Html.HiddenFor(m => m.NationalId)
+                    </div>
+                    @Html.LabelFor(m => m.NationalId, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+
+                <div class="form-group text-right">
+
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", placeholder = "البريد الألكترونى......"})
+
+                    </div>
+                    @Html.LabelFor(m => m.Email, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control", placeholder = "رقم الهاتف......"})
+                    </div>
+                    @Html.LabelFor(m => m.PhoneNumber, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.CheckBoxFor(m => m.EmailConfirmed, new {@class = "form-control"})
+                    </div>
+                    @Html.LabelFor(m => m.EmailConfirmed, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.CheckBoxFor(m => m.LockoutEnabled, new {@class = "form-control"})
+                    </div>
+                    @Html.LabelFor(m => m.LockoutEnabled, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                @if (User.IsInRole("AdminUser"))
+                {
+                    <div class="form-group">
+
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.LockoutEndDateUtc, new {@class = "form-control"})
+                        </div>
+                        @Html.LabelFor(m => m.LockoutEndDateUtc, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                    </div>
+                }
+
+
+
+
+            </fieldset>
+            <input type="submit" value="حفظ" class="btn btn-primary"/>
+            <a href="/Admin/ResendPass?NationalId=@Model.NationalId" class="btn btn-primary">استعادة كلمة السر</a>
+        }
+    </div>
+</div>
+@section Scripts {
+
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+
+
+}

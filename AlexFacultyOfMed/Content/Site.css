@@ -1,0 +1,36 @@
+﻿@font-face {
+    font-family: "Droid Arabic Kufi";
+    src: url("../fonts/DroidKufi-Regular.ttf")
+}
+
+html { font-family: 'Droid Arabic Kufi', sans-serif; }
+
+body {
+    font-family: 'Droid Arabic Kufi', sans-serif;
+    margin-top: 60px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+}
+
+/* Set padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+
+.dl-horizontal dt { white-space: normal; }
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+input,
+select,
+textarea { max-width: 280px; }
+
+.pagination > li > a, .pagination > li > span { background-color: #3498db; }
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus { background-color: #326587; }

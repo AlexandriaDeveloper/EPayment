@@ -1,0 +1,76 @@
+﻿@model AlexFacultyOfMed.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 well bs-component">
+
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>
+                    <i class="fa fa-user-plus"></i>
+                    تسجيل بيانات موظف
+
+                </legend>
+
+                <hr/>
+                @Html.ValidationSummary("", new {@class = "text-danger"})
+                <div class="form-group text-right">
+
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", placeholder = "البريد الألكترونى......"})
+
+                    </div>
+                    @Html.LabelFor(m => m.Email, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "أدخل كلمة السر ......", autocomplete = "off"})
+                    </div>
+                    @Html.LabelFor(m => m.Password, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", placeholder = "تأكيد كلمة السر......", autocomplete = "off"})
+                    </div>
+                    @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.NationalId, new {@class = "form-control", placeholder = "أدخل الرقم القومى......"})
+                    </div>
+                    @Html.LabelFor(m => m.NationalId, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Code, new {@class = "form-control", placeholder = "أدخل الرمز الكودى......"})
+                    </div>
+                    @Html.LabelFor(m => m.Code, new {@class = "col-sm-4 control-label visible-md visible-lg"})
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.MobileNumber, new {@class = "form-control", placeholder = "أدخل 11 رقم المحمول......"})
+                    </div>
+                    @Html.LabelFor(m => m.MobileNumber, new {@class = "col-md-4 control-label visible-md visible-lg"})
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-2">
+                        <input type="submit" class="btn btn-default btn-lg" value="تسجيل"/>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
