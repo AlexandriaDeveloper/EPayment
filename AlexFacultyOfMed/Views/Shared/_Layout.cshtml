@@ -1,54 +1,103 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title -كلية الطب - الدفع الألكترونى</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+    @*<link href="~/Content/MainCSS.css" rel="stylesheet" />*@
+    @*@Styles.Render("~/Content/css")*@
+
+    <script type="text/javascript">
+        function load_js_async(filename) {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = filename;
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        };
+        function load_css_async(filename) {
 
 
+            var cb = function () {
+                var l = document.createElement('link'); l.rel = 'stylesheet';
+                l.href = filename;
+                var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+            };
+            var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                webkitRequestAnimationFrame || msRequestAnimationFrame;
+            if (raf) raf(cb);
+            else window.addEventListener('load', cb);
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    @*<link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=droidarabickufi">*@
+
+        }
+
+
+    </script>
+    @Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/Content/css")
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-            <a href="/Home/Index" class="navbar-brand ">
-                كلية الطب
-                <i class="fa fa-bank"></i>
+                @*@Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", @"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")*@
 
-            </a>
-        </div>
-        <div class="navbar-collapse collapse">
-            @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>*@
-            @Html.Partial("_LoginPartial")
+                <a href="/Home/Index" class="navbar-brand ">
+                    كلية الطب
+                    <i class="fa fa-bank"></i>
+
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>*@
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </div>
-</div>
-<div class="container body-content">
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy;محمد شريف - قسم المراجعه الحسابات @DateTime.Now.Year</p>
-    </footer>
-</div>
+    <div class="container body-content">
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", false)
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy;محمد شريف - قسم المراجعه الحسابات @DateTime.Now.Year</p>
+        </footer>
+    </div>
+    @Scripts.RenderFormat("<script type=\"text/javascript\">load_js_async('{0}')</script>", "~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @*<script src="~/Scripts/compressedscript.js" defer></script>*@
+    @*@Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/Scripts")*@
+    @*@Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/jquery")
+        @Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/bootstrap")*@
+
+    @*@Scripts.Render("~/bundles/Scripts")*@
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", false)
+
+    @*<script src="~/Scripts/jquery-2.1.1.min.js" defer></script>
+
+        <script src="~/Scripts/jquery.validate.min.js" defer></script>
+        <script src="~/Scripts/bootstrap.rtl.min.js" defer></script>
+        <script src="~/Scripts/respond.min.js" defer></script>*@
+
+    @*<script src="~/Scripts/MainScrtipt.js" defer></script>*@
+
+
+
+
 </body>
 </html>
