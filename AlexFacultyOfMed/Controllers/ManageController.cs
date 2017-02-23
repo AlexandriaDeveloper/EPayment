@@ -8,7 +8,7 @@ using Microsoft.Owin.Security;
 namespace AlexFacultyOfMed.Controllers
 {
     [Authorize]
-    [RequireHttps]
+    //[RequireHttps]
     public class ManageController : BaseController
     {
         public async Task<ActionResult> Index()

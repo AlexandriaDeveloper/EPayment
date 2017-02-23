@@ -12,15 +12,24 @@ using Microsoft.Owin.Security;
 
 namespace AlexFacultyOfMed.Controllers
 {
+    using System.Security.Claims;
+
     [Authorize]
-    [RequireHttps]
+    //[RequireHttps]
     public class AccountController : BaseController
     {
         //
         // GET: /Account/Login
         [AllowAnonymous]
+
         public ActionResult Login(string returnUrl)
         {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -29,32 +38,68 @@ namespace AlexFacultyOfMed.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken()]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+
+            if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password))
+            {
+                ModelState.AddModelError("", "لا يمكن ترك اسم المستخدم او كلمة المرور فارغة");
+                return this.View(model);
+            }
+
             var user = await UserManager.FindByEmailAsync(model.Email);
+            ////Test Error
+            if (user == null)
+            {
+                ModelState.AddModelError("", "خطأ ببيانات الدخول");
+                return View(model);
+            }
             if (user != null)
-                if (!user.EmailConfirmed)
-                    return RedirectToAction("EmailNotConfirmed", "Account");
+            {
+
+                if (!user.EmailConfirmed) return RedirectToAction("EmailNotConfirmed", "Account");
+            }
             if (!ModelState.IsValid)
+
                 return View(model);
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+
+            /*Test*/
+
+
+       
+         
+        //        var ident = UserManager.CreateIdentity(user,
+        //   DefaultAuthenticationTypes.ApplicationCookie);
+        //        ident.AddClaims(new[] {
+        //    new Claim("CodeClaim",user.Code.ToString()),
+        //    new Claim("NationalIdClaim",user.NationalId.ToString()),
+        //});
+
+        //        AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, ident);
+            
+        
             var result =
-                await
-                    SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, true);
+           await
+               SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, true);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        //UserManager.MarkAsLogin(model.Email,true);
+                        //Session["User"] = model.Email;
+                        return RedirectToLocal(returnUrl);
+                    }
                 // return RedirectToAction("Contact", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, model.RememberMe});
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "خطأ ببيانات الدخول");
                     return View(model);
             }
         }
@@ -81,7 +126,7 @@ namespace AlexFacultyOfMed.Controllers
         {
             var Code = 0;
 
-
+            model.Code = model.Code + "AAA";
             try
             {
                 Code = BitConverter.ToInt32(Convert.FromBase64String(model.Code + "=="), 0);
@@ -130,7 +175,7 @@ namespace AlexFacultyOfMed.Controllers
 
             await SendEmailCodeConfirmation(user, emp);
 
-            return RedirectToAction("EmailSent", "Account", new {EmailAddress = model.Email});
+            return RedirectToAction("EmailSent", "Account", new { EmailAddress = model.Email });
         }
 
         [AllowAnonymous]
@@ -147,7 +192,7 @@ namespace AlexFacultyOfMed.Controllers
             // Require that the user has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
                 return View("Error");
-            return View(new VerifyCodeViewModel {Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe});
+            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -198,6 +243,7 @@ namespace AlexFacultyOfMed.Controllers
         {
             var Code = 0;
             Employee emp = null;
+            model.Code = model.Code + "AAA";
             try
             {
                 Code = BitConverter.ToInt32(Convert.FromBase64String(model.Code + "=="), 0);
@@ -242,7 +288,7 @@ namespace AlexFacultyOfMed.Controllers
 
                     await SendEmailCodeConfirmation(user, emp);
 
-                    return RedirectToAction("EmailSent", "Account", new {EmailAddress = model.Email});
+                    return RedirectToAction("EmailSent", "Account", new { EmailAddress = model.Email });
                 }
                 AddErrors(result);
             }
@@ -256,7 +302,7 @@ namespace AlexFacultyOfMed.Controllers
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             // Send an email with this link
             var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-            var callbackUrl = Url.Action("ConfirmEmail", "Account", new {userId = user.Id, code},
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code },
                 Request.Url.Scheme);
 
 
@@ -333,7 +379,7 @@ namespace AlexFacultyOfMed.Controllers
                 //   await  SendEmailCodeConfirmation(user, emp);
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new {userId = user.Id, code},
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code },
                     Request.Url.Scheme);
                 await
                     UserManager.SendEmailAsync(user.Id, "أستعادة كلمة المرور",
@@ -387,7 +433,11 @@ namespace AlexFacultyOfMed.Controllers
         {
             return View();
         }
-
+        [AllowAnonymous]
+        public ActionResult NotAuthorized()
+        {
+            return View();
+        }
         //
         // POST: /Account/ExternalLogin
         //[HttpPost]
@@ -409,9 +459,9 @@ namespace AlexFacultyOfMed.Controllers
                 return View("Error");
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions =
-                userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose}).ToList();
+                userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
             return
-                View(new SendCodeViewModel {Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe});
+                View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -428,7 +478,7 @@ namespace AlexFacultyOfMed.Controllers
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
                 return View("Error");
             return RedirectToAction("VerifyCode",
-                new {Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe});
+                new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -505,7 +555,10 @@ namespace AlexFacultyOfMed.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            UserManager.MarkAsLogin(User.Identity.Name,false);
+            
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -564,7 +617,7 @@ namespace AlexFacultyOfMed.Controllers
             {
                 if (s == null) throw new ArgumentNullException("s");
 
-                if ((s.Length%4 == 0) && _rx.IsMatch(s))
+                if ((s.Length % 4 == 0) && _rx.IsMatch(s))
                     try
                     {
                         return Convert.FromBase64String(s);
@@ -604,7 +657,7 @@ namespace AlexFacultyOfMed.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
+                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
                 if (UserId != null)
                     properties.Dictionary[XsrfKey] = UserId;
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);

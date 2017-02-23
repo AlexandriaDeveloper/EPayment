@@ -34,3 +34,24 @@ textarea { max-width: 280px; }
 .pagination > li > a, .pagination > li > span { background-color: #3498db; }
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus { background-color: #326587; }
+.textarea {
+    width:90%;
+    max-width:90%;
+    max-height:30%;
+}
+
+.Question {
+
+    margin: 10px;
+    width: 100%;
+    height: 80px;
+    background-color: gray
+}
+
+.Answer {
+
+    margin: 10px;
+    width: 100%;
+    height: 80px;
+    background-color: greenyellow
+}

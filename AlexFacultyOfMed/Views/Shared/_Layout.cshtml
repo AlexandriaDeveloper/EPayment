@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
     <title>@ViewBag.Title -كلية الطب - الدفع الألكترونى</title>
 
     @*@Scripts.Render("~/bundles/modernizr")*@
 
-    @*<link href="~/Content/MainCSS.css" rel="stylesheet" />*@
-    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/MainCSS.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
 
     <script type="text/javascript">
         function load_js_async(filename) {
@@ -37,65 +39,76 @@
 
 
     </script>
-    @Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/Content/css")
+    @*@Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/Content/css")*@
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
 
-                @*@Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", @"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")*@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-                <a href="/Home/Index" class="navbar-brand ">
-                    كلية الطب
-                    <i class="fa fa-bank"></i>
+            @*@Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", @"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")*@
 
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>*@
-                @Html.Partial("_LoginPartial")
-            </div>
+            <a href="/Home/Index" class="navbar-brand ">
+                كلية الطب
+                <i class="fa fa-bank"></i>
+
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+
+
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
-    <div class="container body-content">
+</div>
+<div class="container body-content">
 
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy;محمد شريف - قسم المراجعه الحسابات @DateTime.Now.Year</p>
-        </footer>
-    </div>
-    @Scripts.RenderFormat("<script type=\"text/javascript\">load_js_async('{0}')</script>", "~/bundles/bootstrap")
-    @*@Scripts.Render("~/bundles/bootstrap")*@
-    @*<script src="~/Scripts/compressedscript.js" defer></script>*@
-    @*@Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/Scripts")*@
-    @*@Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/jquery")
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy;محمد شريف - قسم المراجعه الحسابات @DateTime.Now.Year</p>
+    </footer>
+</div>
+@Scripts.RenderFormat("<script type=\"text/javascript\">load_js_async('{0}')</script>", "~/bundles/bootstrap")
+@*@Scripts.Render("~/bundles/bootstrap")*@
+@*<script src="~/Scripts/compressedscript.js" defer></script>*@
+@*@Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/Scripts")*@
+@*@Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/jquery")
         @Scripts.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/bundles/bootstrap")*@
 
-    @*@Scripts.Render("~/bundles/Scripts")*@
+@*@Scripts.Render("~/bundles/Scripts")*@
 
-    @*@Scripts.Render("~/bundles/jquery")
+@*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", false)
+@RenderSection("scripts", false)
 
-    @*<script src="~/Scripts/jquery-2.1.1.min.js" defer></script>
+@*<script src="~/Scripts/jquery-2.1.1.min.js" defer></script>
 
         <script src="~/Scripts/jquery.validate.min.js" defer></script>
         <script src="~/Scripts/bootstrap.rtl.min.js" defer></script>
         <script src="~/Scripts/respond.min.js" defer></script>*@
 
-    @*<script src="~/Scripts/MainScrtipt.js" defer></script>*@
+@*<script src="~/Scripts/MainScrtipt.js" defer></script>*@
 
+<script>
+
+    function countChar(val) {
+        var len = val.value.length;
+        if (len >= 500) {
+            val.value = val.value.substring(0, 501);
+        } else {
+            $('#charNum').text(500 - len);
+        }
+    }
+
+
+</script>
 
 
 

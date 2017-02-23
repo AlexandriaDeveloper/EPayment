@@ -1,0 +1,72 @@
+﻿@model List<AlexFacultyOfMed.ViewModel.ComplainDetailsViewModel>
+@{
+    ViewBag.Title = "ComplainDetails";
+}
+@if (User.IsInRole("AdminUser"))
+{
+    <a href="/Complain/CloseComplain/@ViewBag.ComplainId" class="btn btn-danger">
+        أغلاق
+
+    </a>
+}
+
+@foreach (var complainDetail in Model)
+{
+    <div class="well">
+        <div class="info">
+            
+            <i class="fa fa-user"></i>
+            <label> @complainDetail.AskedBy</label>-@complainDetail.ComplainQDate
+
+        </div>
+    
+        <div class="">
+            @Html.Raw( complainDetail.ComplainQ)
+
+        </div>
+
+
+    </div>
+
+   if(!string.IsNullOrEmpty( complainDetail.ComplainA))
+    {
+
+        <div class="well">
+            <div class="info">
+                <i class=" fa fa-bank"></i>
+                <label class="">
+                    كلية الطب - وحدة الدفع الألكترونى
+
+                </label>: @complainDetail.ComplainADate
+
+            </div>
+         
+            <div >
+                @Html.Raw( complainDetail.ComplainA)
+
+            </div>
+          
+            @if (User.IsInRole("AdminUser"))
+            {
+
+                <div class="btn-group btn-sm pull-left">
+                    <a href="/Complain/Reply/@complainDetail.ComplainDetailsId" class="btn btn-primary">تعديل</a>
+                </div>
+            }
+            <div class="clearfix"></div>
+        </div>
+
+    }
+    else
+    {
+       if (User.IsInRole("AdminUser"))
+         {
+
+             <a href="/Complain/Reply/@complainDetail.ComplainDetailsId" class="btn btn-primary">رد</a>
+        }
+    }
+
+ 
+
+}
+

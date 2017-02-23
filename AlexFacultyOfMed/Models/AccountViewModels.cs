@@ -72,7 +72,7 @@ namespace AlexFacultyOfMed.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "يجب الا تقل عن 6  ارقام ", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "يجب الا تقل عن 3  ارقام ", MinimumLength = 3)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة السر")]
         public string Password { get; set; }
@@ -85,8 +85,8 @@ namespace AlexFacultyOfMed.Models
 
         [Required]
         [Display(Name = "الكود السرى")]
-        [MaxLength(6, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
-        [MinLength(6, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
+        [MaxLength(3, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
+        [MinLength(3, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
         public string Code { get; set; }
 
 
@@ -148,8 +148,8 @@ namespace AlexFacultyOfMed.Models
 
         [Required(ErrorMessage = "يجب أدخال الكود السرى")]
         [Display(Name = "الكود السرى")]
-        [MaxLength(6, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
-        [MinLength(6, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
+        [MaxLength(3, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
+        [MinLength(3, ErrorMessage = "عفوا الكود الذى قمت بإدخالة خطـأ ")]
         public string Code { get; set; }
 
 

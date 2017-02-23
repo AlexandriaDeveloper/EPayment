@@ -1,0 +1,197 @@
+﻿<error errorId="93e2c939-8f1e-4335-84f3-ce09fc03b6e4" host="WIN-P6FPLTJH1HV" type="System.ComponentModel.Win32Exception" message="The requested name is valid, but no data of the requested type was found" detail="System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - The requested name is valid, but no data of the requested type was found.) ---&gt; System.ComponentModel.Win32Exception (0x80004005): The requested name is valid, but no data of the requested type was found&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)&#xD;&#xA;   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal&amp; connection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.Open()&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.&lt;Open&gt;b__36(DbConnection t, DbConnectionInterceptionContext c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices.&lt;&gt;c__DisplayClass33.&lt;UsingConnection&gt;b__32()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbExecutionStrategy.&lt;&gt;c__DisplayClass1.&lt;Execute&gt;b__0()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbExecutionStrategy.Execute(Action operation)&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)&#xD;&#xA;   at System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)&#xD;&#xA;   at System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()&#xD;&#xA;   at System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)&#xD;&#xA;   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)&#xD;&#xA;   at System.Data.Entity.Database.Create(DatabaseExistenceState existenceState)&#xD;&#xA;   at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.&lt;&gt;c__DisplayClassf`1.&lt;CreateInitializationAction&gt;b__e()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.&lt;InitializeDatabase&gt;b__4(InternalContext c)&#xD;&#xA;   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()&#xD;&#xA;   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)&#xD;&#xA;   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)&#xD;&#xA;   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.&lt;GetUserAggregateAsync&gt;d__6c.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()&#xD;&#xA;   at AlexFacultyOfMed.Controllers.AccountController.&lt;Login&gt;d__1.MoveNext() in C:\Users\Seagull\Documents\Visual Studio 2015\Projects\EPayment\AlexFacultyOfMed\Controllers\AccountController.cs:line 46&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;BeginInvokeAsynchronousActionMethod&gt;b__36(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;ClientConnectionId:00000000-0000-0000-0000-000000000000&#xD;&#xA;Error Number:11004,State:0,Class:20" time="2017-02-03T11:34:10.4828819Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:202&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:.AspNet.Cookies=J947FGLTwYBc88Rq0jPij5Elh6bNMuZzKaB9-I-O8e4NcJVrtCiLRIkvbSQ2zqKsS6s4k-MZV3riGiIHPLXceedqxWxQ9t5aynDNMNVGTCNLRrIhkHVWTM_yTr4Yu6IQzYi2G19HWLFCh9jpDAlH5QkInPSh8bLPyGoveNH-zBeem2TmQILnAS-KJPPkjNCgba07YbTJMsl-kUVlKUILLUZN9tVckG_IeeLBk-a6teBJAKc_DQOyp9DLZ3nsjTadQXh-zNY9faWI-R9ItyPVtXl_WiwuNms-nAzPT48cG25rfVTIPkNmJWiX0iBB-OfWy7oBFbDTcPrHuYT7J3F-jCB6ya_b7PDYnO4KVxn1QZdnhPlZG0w-vilMZ-07d2XmhhcLpB6wiH57sBQB_8HxHmvINBQmIt9eVX6M2JzSTrnDAYA6gPPxNXtrXMQkz4jeFcyZTCdwEekXDQwaoUbbNGKKF0ryTHtBMHwSv_UMWMdgq4aykHfIOrcnvce6-MPB; __RequestVerificationToken=o6gaFBi6MmVdcnTKAmn-t8TdAbi8SiBi5U9ihb25YZtCOa_xk9PPExvkeNdno6e7ZWBm-1cnq5bf6IBPBnHa_uLt1YQ6r2Y566TgUUAgiQk1; MyAuthCookies=z_eMk5ArU7RFQGnCUef8nfYIb7R9H25r1SQRdlkGd7Z-sYQEuGyMUMCWPv9gd1hr4FRpkE5fIueskXHfUdBZvTr3-W6n0qKjnWJIdYo3ck4hSxse9uQB6DeVZI5EyptRxCIN9Cf1kJZJXLJg4kvek-XVDkt10GzyuLeqeUUMiyRFeeXhCOw0US7JjyPKNOs9eau453j9tK1W-6rgFCTtv_RGXyVLWSU-hAYx73o4T51vfaF8GqoZTl4ofXKs2IkpBzj4Wo1NTBvze0DWdMZS4mUWl4BR6Fg07LJCtTjAkSystUKKPKk0OQ2vepZUas4ELeIDFg1JYJliegWpB22-Jx-Zh5ccYgs2X9XFACQ3ZBkl-LiNcQ69EThCjVZLpt92BtPORUYm_MGxI1zSRKlleZ5TZY3JOSCZwBU5itMeZ24YwQidQYDoxYfM1d2pLW_i7_FEUWd318oAMX7DDMgG8ZEYuqle__9lyrhzyIVyLkg5O3ndBiXly_wNU4mdeOli_IglIteeDkT7AN4eqEIdqBTWztUkGiCQpxCt45u6tcA&#xD;&#xA;HTTP_HOST:localhost:44394&#xD;&#xA;HTTP_REFERER:https://localhost:44394/Account/Login&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://localhost:44394&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 202&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: .AspNet.Cookies=J947FGLTwYBc88Rq0jPij5Elh6bNMuZzKaB9-I-O8e4NcJVrtCiLRIkvbSQ2zqKsS6s4k-MZV3riGiIHPLXceedqxWxQ9t5aynDNMNVGTCNLRrIhkHVWTM_yTr4Yu6IQzYi2G19HWLFCh9jpDAlH5QkInPSh8bLPyGoveNH-zBeem2TmQILnAS-KJPPkjNCgba07YbTJMsl-kUVlKUILLUZN9tVckG_IeeLBk-a6teBJAKc_DQOyp9DLZ3nsjTadQXh-zNY9faWI-R9ItyPVtXl_WiwuNms-nAzPT48cG25rfVTIPkNmJWiX0iBB-OfWy7oBFbDTcPrHuYT7J3F-jCB6ya_b7PDYnO4KVxn1QZdnhPlZG0w-vilMZ-07d2XmhhcLpB6wiH57sBQB_8HxHmvINBQmIt9eVX6M2JzSTrnDAYA6gPPxNXtrXMQkz4jeFcyZTCdwEekXDQwaoUbbNGKKF0ryTHtBMHwSv_UMWMdgq4aykHfIOrcnvce6-MPB; __RequestVerificationToken=o6gaFBi6MmVdcnTKAmn-t8TdAbi8SiBi5U9ihb25YZtCOa_xk9PPExvkeNdno6e7ZWBm-1cnq5bf6IBPBnHa_uLt1YQ6r2Y566TgUUAgiQk1; MyAuthCookies=z_eMk5ArU7RFQGnCUef8nfYIb7R9H25r1SQRdlkGd7Z-sYQEuGyMUMCWPv9gd1hr4FRpkE5fIueskXHfUdBZvTr3-W6n0qKjnWJIdYo3ck4hSxse9uQB6DeVZI5EyptRxCIN9Cf1kJZJXLJg4kvek-XVDkt10GzyuLeqeUUMiyRFeeXhCOw0US7JjyPKNOs9eau453j9tK1W-6rgFCTtv_RGXyVLWSU-hAYx73o4T51vfaF8GqoZTl4ofXKs2IkpBzj4Wo1NTBvze0DWdMZS4mUWl4BR6Fg07LJCtTjAkSystUKKPKk0OQ2vepZUas4ELeIDFg1JYJliegWpB22-Jx-Zh5ccYgs2X9XFACQ3ZBkl-LiNcQ69EThCjVZLpt92BtPORUYm_MGxI1zSRKlleZ5TZY3JOSCZwBU5itMeZ24YwQidQYDoxYfM1d2pLW_i7_FEUWd318oAMX7DDMgG8ZEYuqle__9lyrhzyIVyLkg5O3ndBiXly_wNU4mdeOli_IglIteeDkT7AN4eqEIdqBTWztUkGiCQpxCt45u6tcA&#xD;&#xA;Host: localhost:44394&#xD;&#xA;Referer: https://localhost:44394/Account/Login&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&#xD;&#xA;Origin: https://localhost:44394&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/4/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Seagull\documents\visual studio 2015\Projects\EPayment\AlexFacultyOfMed\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="202" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="4" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/4" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Account/Login" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Seagull\documents\visual studio 2015\Projects\EPayment\AlexFacultyOfMed\Account\Login" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="12312" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Account/Login" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44394" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Account/Login" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="202" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.Cookies=J947FGLTwYBc88Rq0jPij5Elh6bNMuZzKaB9-I-O8e4NcJVrtCiLRIkvbSQ2zqKsS6s4k-MZV3riGiIHPLXceedqxWxQ9t5aynDNMNVGTCNLRrIhkHVWTM_yTr4Yu6IQzYi2G19HWLFCh9jpDAlH5QkInPSh8bLPyGoveNH-zBeem2TmQILnAS-KJPPkjNCgba07YbTJMsl-kUVlKUILLUZN9tVckG_IeeLBk-a6teBJAKc_DQOyp9DLZ3nsjTadQXh-zNY9faWI-R9ItyPVtXl_WiwuNms-nAzPT48cG25rfVTIPkNmJWiX0iBB-OfWy7oBFbDTcPrHuYT7J3F-jCB6ya_b7PDYnO4KVxn1QZdnhPlZG0w-vilMZ-07d2XmhhcLpB6wiH57sBQB_8HxHmvINBQmIt9eVX6M2JzSTrnDAYA6gPPxNXtrXMQkz4jeFcyZTCdwEekXDQwaoUbbNGKKF0ryTHtBMHwSv_UMWMdgq4aykHfIOrcnvce6-MPB; __RequestVerificationToken=o6gaFBi6MmVdcnTKAmn-t8TdAbi8SiBi5U9ihb25YZtCOa_xk9PPExvkeNdno6e7ZWBm-1cnq5bf6IBPBnHa_uLt1YQ6r2Y566TgUUAgiQk1; MyAuthCookies=z_eMk5ArU7RFQGnCUef8nfYIb7R9H25r1SQRdlkGd7Z-sYQEuGyMUMCWPv9gd1hr4FRpkE5fIueskXHfUdBZvTr3-W6n0qKjnWJIdYo3ck4hSxse9uQB6DeVZI5EyptRxCIN9Cf1kJZJXLJg4kvek-XVDkt10GzyuLeqeUUMiyRFeeXhCOw0US7JjyPKNOs9eau453j9tK1W-6rgFCTtv_RGXyVLWSU-hAYx73o4T51vfaF8GqoZTl4ofXKs2IkpBzj4Wo1NTBvze0DWdMZS4mUWl4BR6Fg07LJCtTjAkSystUKKPKk0OQ2vepZUas4ELeIDFg1JYJliegWpB22-Jx-Zh5ccYgs2X9XFACQ3ZBkl-LiNcQ69EThCjVZLpt92BtPORUYm_MGxI1zSRKlleZ5TZY3JOSCZwBU5itMeZ24YwQidQYDoxYfM1d2pLW_i7_FEUWd318oAMX7DDMgG8ZEYuqle__9lyrhzyIVyLkg5O3ndBiXly_wNU4mdeOli_IglIteeDkT7AN4eqEIdqBTWztUkGiCQpxCt45u6tcA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44394" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44394/Account/Login" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://localhost:44394" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="YVQV7mG6N7UlOoLSgR1DU6LbkXRl9wLsPX5_AVswiIhEFa0662qvQb2z_IgUVqNQm220pnJqbKEctZFfrakYo8DSZbKg-xZ1Qo1iFcfH47U1" />
+    </item>
+    <item name="Email">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="Password">
+      <value string="fr33tim3#" />
+    </item>
+    <item name="RememberMe">
+      <value string="false" />
+    </item>
+  </form>
+  <cookies>
+    <item name=".AspNet.Cookies">
+      <value string="J947FGLTwYBc88Rq0jPij5Elh6bNMuZzKaB9-I-O8e4NcJVrtCiLRIkvbSQ2zqKsS6s4k-MZV3riGiIHPLXceedqxWxQ9t5aynDNMNVGTCNLRrIhkHVWTM_yTr4Yu6IQzYi2G19HWLFCh9jpDAlH5QkInPSh8bLPyGoveNH-zBeem2TmQILnAS-KJPPkjNCgba07YbTJMsl-kUVlKUILLUZN9tVckG_IeeLBk-a6teBJAKc_DQOyp9DLZ3nsjTadQXh-zNY9faWI-R9ItyPVtXl_WiwuNms-nAzPT48cG25rfVTIPkNmJWiX0iBB-OfWy7oBFbDTcPrHuYT7J3F-jCB6ya_b7PDYnO4KVxn1QZdnhPlZG0w-vilMZ-07d2XmhhcLpB6wiH57sBQB_8HxHmvINBQmIt9eVX6M2JzSTrnDAYA6gPPxNXtrXMQkz4jeFcyZTCdwEekXDQwaoUbbNGKKF0ryTHtBMHwSv_UMWMdgq4aykHfIOrcnvce6-MPB" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="o6gaFBi6MmVdcnTKAmn-t8TdAbi8SiBi5U9ihb25YZtCOa_xk9PPExvkeNdno6e7ZWBm-1cnq5bf6IBPBnHa_uLt1YQ6r2Y566TgUUAgiQk1" />
+    </item>
+    <item name="MyAuthCookies">
+      <value string="z_eMk5ArU7RFQGnCUef8nfYIb7R9H25r1SQRdlkGd7Z-sYQEuGyMUMCWPv9gd1hr4FRpkE5fIueskXHfUdBZvTr3-W6n0qKjnWJIdYo3ck4hSxse9uQB6DeVZI5EyptRxCIN9Cf1kJZJXLJg4kvek-XVDkt10GzyuLeqeUUMiyRFeeXhCOw0US7JjyPKNOs9eau453j9tK1W-6rgFCTtv_RGXyVLWSU-hAYx73o4T51vfaF8GqoZTl4ofXKs2IkpBzj4Wo1NTBvze0DWdMZS4mUWl4BR6Fg07LJCtTjAkSystUKKPKk0OQ2vepZUas4ELeIDFg1JYJliegWpB22-Jx-Zh5ccYgs2X9XFACQ3ZBkl-LiNcQ69EThCjVZLpt92BtPORUYm_MGxI1zSRKlleZ5TZY3JOSCZwBU5itMeZ24YwQidQYDoxYfM1d2pLW_i7_FEUWd318oAMX7DDMgG8ZEYuqle__9lyrhzyIVyLkg5O3ndBiXly_wNU4mdeOli_IglIteeDkT7AN4eqEIdqBTWztUkGiCQpxCt45u6tcA" />
+    </item>
+  </cookies>
+</error>

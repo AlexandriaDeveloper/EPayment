@@ -1,0 +1,28 @@
+﻿@model  AlexFacultyOfMed.ViewModel.ComplainDetailsViewModel
+
+@{
+    ViewBag.Title = "Reply";
+}
+
+@using (Html.BeginForm("Reply", "Complain", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="well">
+        @Html.HiddenFor(x => x.ComplainDetailsId)
+        <div  >@Model.ComplainQDate</div>
+        @Model.ComplainQ
+    </div>
+
+    @Html.TextAreaFor(x =>  x.ComplainA, new { @class = "form-control", rows = "8", cols = "50", style = "min-width: 100%", onkeyup = "countChar(this)" })
+
+
+    <div id="charNum"></div>
+    <br/>
+     <div class="text-center">
+
+        <input type="submit" class="btn btn-primary" value="رد" />
+    </div>
+}
+

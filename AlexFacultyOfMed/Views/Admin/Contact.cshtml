@@ -1,0 +1,97 @@
+﻿@model AlexFacultyOfMed.ViewModel.PaymentInfoVM
+
+
+أ/
+@Model.Employee.Name
+رقم قومى
+@Model.Employee.NationalId
+
+<table class="table  table-striped table-hover table-responsive">
+    <thead>
+        <tr class="info">
+            <td class="col-xs-2"></td>
+            <td class="col-xs-4">
+                البيان
+            </td>
+            <td class="col-xs-2">
+                المبلغ
+            </td>
+            <td class="col-xs-2">
+                تاريخ الأرسال
+            </td>
+            <td class="col-xs-2">
+                تاريخ الأستحقاق
+            </td>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var details in Model.PaymentData)
+        {
+            <tr>
+                <td>
+                    @if (details.DailyFileDetails.HasData)
+                    {
+                        <a href="/Admin/FileData/@details.DailyFileDetails.Id" class="btn btn-primary btn-sm">
+                            تفاصيل
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary btn-sm">
+                            لا يوجد تفاصيل
+
+                        </button>
+                    }
+
+                </td>
+                <td> @details.DailyFile.Name </td>
+                <td>
+                    <i class="fa fa-money"></i>
+                    @details.DailyFileDetails.Net ج
+                </td>
+                <td>
+
+
+                    @string.Format("{0:dd/MM/yyyy}", details.Daily.ClosedDate)
+                </td>
+                <td>
+
+
+                    @string.Format("{0:dd/MM/yyyy}", details.Daily.DueDate)
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+
+        <tr>
+            <td colspan="3">
+                <ul class="pagination left">
+                    @for (var i = 1; i < Model.Pages + 1; i++)
+                    {
+                        if (i == Model.CurrentPage)
+                        {
+                            <li class="active">
+                                <a href="/Home/Contact?Page=@i">@i</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/Home/Contact?Page=@i">@i</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </td>
+        </tr>
+
+    </tfoot>
+
+</table>

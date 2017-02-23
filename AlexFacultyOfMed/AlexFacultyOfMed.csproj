@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/1c220024-1052-40e3-950e-e99b8fd4c805/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/AlexFacultyOfMed</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/1c220024-1052-40e3-950e-e99b8fd4c805/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/AlexFacultyOfMed</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.13605.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -190,45 +199,58 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ComplainController.cs" />
+    <Compile Include="Controllers\DevController.cs" />
+    <Compile Include="Controllers\ElmahController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Filter\AntiForgeryTokenFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611111329480_Initilize.cs" />
-    <Compile Include="Migrations\201611111329480_Initilize.Designer.cs">
-      <DependentUpon>201611111329480_Initilize.cs</DependentUpon>
+    <Compile Include="Helper\ElmahResult.cs" />
+    <Compile Include="Helper\Logger.cs" />
+    <Compile Include="Migrations\201702010930536_Initilize.cs" />
+    <Compile Include="Migrations\201702010930536_Initilize.Designer.cs">
+      <DependentUpon>201702010930536_Initilize.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611111346154_Initilize2.cs" />
-    <Compile Include="Migrations\201611111346154_Initilize2.Designer.cs">
-      <DependentUpon>201611111346154_Initilize2.cs</DependentUpon>
+    <Compile Include="Migrations\201702191839111_fixdb.cs" />
+    <Compile Include="Migrations\201702191839111_fixdb.Designer.cs">
+      <DependentUpon>201702191839111_fixdb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611151105551_test-seed.cs" />
-    <Compile Include="Migrations\201611151105551_test-seed.Designer.cs">
-      <DependentUpon>201611151105551_test-seed.cs</DependentUpon>
+    <Compile Include="Migrations\201702221604329_LogToDb.cs" />
+    <Compile Include="Migrations\201702221604329_LogToDb.Designer.cs">
+      <DependentUpon>201702221604329_LogToDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611151115302_test2.cs" />
-    <Compile Include="Migrations\201611151115302_test2.Designer.cs">
-      <DependentUpon>201611151115302_test2.cs</DependentUpon>
+    <Compile Include="Migrations\201702221944593_UserIdentity.cs" />
+    <Compile Include="Migrations\201702221944593_UserIdentity.Designer.cs">
+      <DependentUpon>201702221944593_UserIdentity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyBranch.cs" />
+    <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\Daily.cs" />
     <Compile Include="Models\DailyFile.cs" />
     <Compile Include="Models\DailyFileDetails.cs" />
+    <Compile Include="Models\DailyFileDetailsData.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EPaymentContext.cs" />
     <Compile Include="Models\ExpensessType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Orgnization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
+    <Compile Include="ViewModel\ComplainViewModel.cs" />
     <Compile Include="ViewModel\Contact.cs" />
+    <Compile Include="ViewModel\Dev\DevViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -244,6 +266,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\tab.jpg" />
+    <Content Include="Note\MigrationInitilize.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -258,9 +281,23 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - FTP %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - FTP %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - FTP %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - Web Deploy %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\AzureWebDeployment18Dec.pubxml" />
     <None Include="Properties\PublishProfiles\AlexFacultyOfMed - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\alexfacultyofmed - Web Deploy %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\AzureNewDeploymentSettings.pubxml" />
     <None Include="Properties\PublishProfiles\AlexFacultyOfMed - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap.rtl.min.js" />
+    <None Include="Properties\PublishProfiles\NewAzureDeployment.pubxml" />
+    <None Include="Properties\PublishProfiles\Somee.pubxml" />
+    <None Include="Properties\PublishProfiles\StanderdProfilAzurePublish.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\compressedscript.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
@@ -277,7 +314,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Templates\EmailTemplate.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -317,10 +356,21 @@
     <Content Include="Views\Account\EmailSent.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Complain\Index.cshtml" />
+    <Content Include="Views\Complain\PostComplain.cshtml" />
+    <Content Include="Views\Complain\ComplainDetails.cshtml" />
+    <Content Include="Views\Complain\Reply.cshtml" />
+    <Content Include="Views\Account\NotAuthorized.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Home\FileData.cshtml" />
+    <Content Include="Views\Dev\Index.cshtml" />
+    <Content Include="Views\Admin\FileData.cshtml" />
+    <Content Include="Views\Admin\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Elmah\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -334,17 +384,17 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611111329480_Initilize.resx">
-      <DependentUpon>201611111329480_Initilize.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702010930536_Initilize.resx">
+      <DependentUpon>201702010930536_Initilize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611111346154_Initilize2.resx">
-      <DependentUpon>201611111346154_Initilize2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702191839111_fixdb.resx">
+      <DependentUpon>201702191839111_fixdb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611151105551_test-seed.resx">
-      <DependentUpon>201611151105551_test-seed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702221604329_LogToDb.resx">
+      <DependentUpon>201702221604329_LogToDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611151115302_test2.resx">
-      <DependentUpon>201611151115302_test2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702221944593_UserIdentity.resx">
+      <DependentUpon>201702221944593_UserIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -365,7 +415,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7522</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44394/</IISUrl>
+          <IISUrl>http://localhost:1234/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

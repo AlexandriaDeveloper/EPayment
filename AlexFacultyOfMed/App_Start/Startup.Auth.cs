@@ -21,10 +21,18 @@ namespace AlexFacultyOfMed
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
+            
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
+                
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Account/NotAuthorized"),
+                CookieHttpOnly = true,
+        
+                CookieSecure = CookieSecureOption.SameAsRequest,
+                ExpireTimeSpan = TimeSpan.FromMinutes(10),
+                CookieName = "MyAuthCookies",
+
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

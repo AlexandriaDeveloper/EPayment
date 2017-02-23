@@ -1,0 +1,312 @@
+﻿namespace AlexFacultyOfMed.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class Initilize : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.ComplainDetails",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ComplainId = c.Int(nullable: false),
+                        ComplainQ = c.String(nullable: false, maxLength: 500),
+                        ComplainQDate = c.DateTime(),
+                        ComplainA = c.String(maxLength: 500),
+                        ComplainADate = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Complains", t => t.ComplainId, cascadeDelete: true)
+                .Index(t => t.ComplainId);
+            
+            CreateTable(
+                "dbo.Complains",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(maxLength: 128),
+                        CreatedDate = c.DateTime(nullable: false),
+                        ClosedDate = c.DateTime(),
+                        Status = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Dailies",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 200),
+                     //   TotalAmount = c.Decimal(precision: 18, scale: 2),
+                       // TotalEmployees = c.Int(),
+                        CheckGP = c.String(maxLength: 100),
+                        CreatedDate = c.DateTime(nullable: false),
+                        DailyDay = c.DateTime(),
+                        ClosedDate = c.DateTime(),
+                        DueDate = c.DateTime(),
+                        ExpensessTypeId = c.Int(nullable: false),
+                        DataEntryId = c.String(maxLength: 128),
+                        Open = c.Boolean(nullable: false),
+                        Cach = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+
+            Sql(@"CREATE FUNCTION dbo.GetSumAmountDaily(@DailyId INT)
+                RETURNS 
+                DECIMAL(18,2) 
+                AS 
+                BEGIN 
+                DECLARE @empsNetSum Decimal(18,2);  
+                
+		    	 SELECT  @empsNetSum=  SUM(FileTotalAmount+FileTotalCashAmount) 
+			     FROM (SELECT FileTotalAmount,FileTotalCashAmount,DailyId FROM DailyFiles ) T
+			     WHERE DailyId=@DailyId
+		    	 group by DailyId
+                 
+               RETURN ISNULL(@empSNetSum,0)
+                End");
+            Sql(@"CREATE FUNCTION dbo.GetSumEmpsDaily(@DailyId INT)
+             RETURNS INT 
+             AS 
+             BEGIN 
+             DECLARE   @empsNums int;            
+             select @empsNums=SUM(EmployeesNumber) From dbo.DailyFiles where DailyId=@DailyId   
+            RETURN ISNULL(@empsNums,0)
+             End");
+
+            Sql(@"ALTER TABLE dbo.Dailies ADD TotalAmount AS dbo.GetSumAmountDaily(Id),
+                TotalEmployees AS dbo.GetSumEmpsDaily(Id)");
+ 
+            CreateTable(
+                "dbo.DailyFiles",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 300),
+                        DataEntryId = c.String(maxLength: 128),
+                        FileNumberInfo = c.String(maxLength: 50),
+                     //   EmployeesNumber = c.Int(),
+                     //   FileTotalAmount = c.Decimal(precision: 18, scale: 2),
+                        FilePath = c.String(maxLength: 200),
+                        CreatedDate = c.DateTime(nullable: false),
+                        DailyId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Dailies", t => t.DailyId, cascadeDelete: true)
+                .Index(t => t.DailyId);
+            Sql(@"CREATE FUNCTION dbo.GetSumAmountDailyFiles(@DailyFileId INT)
+                RETURNS 
+                DECIMAL(18,2) 
+                AS 
+                BEGIN 
+                DECLARE @empsNetSum Decimal(18,2);  
+                select @empsNetSum=SUM(Net) From dbo.DailyFileDetails  where DailyFileId=@DailyFileId   AND    IsAtm =1         
+               RETURN ISNULL(@empsNetSum,0)
+                End");
+            Sql(@"CREATE FUNCTION dbo.GetSumCashAmountDailyFiles(@DailyFileId INT)
+                RETURNS 
+                DECIMAL(18,2) 
+                AS 
+                BEGIN 
+                DECLARE @empsNetSum Decimal(18,2);  
+                select @empsNetSum=SUM(Net) From dbo.DailyFileDetails  where DailyFileId=@DailyFileId   AND    IsAtm =0         
+               RETURN ISNULL(@empsNetSum,0)
+                End");
+            Sql(@"CREATE FUNCTION dbo.GetSumEmpsDailyFiles(@DailyFileId INT)
+             RETURNS INT 
+             AS 
+             BEGIN 
+             DECLARE   @empsNums int;            
+             select @empsNums=COUNT(EmployeeId) From dbo.DailyFileDetails where DailyFileId=@DailyFileId AND    IsAtm =1 
+            RETURN ISNULL(@empsNums,0)
+             End");
+            Sql(@"CREATE FUNCTION dbo.GetSumEmpsCashDailyFiles(@DailyFileId INT)
+             RETURNS INT 
+             AS 
+             BEGIN 
+             DECLARE   @empsNums int;            
+             select @empsNums=COUNT(EmployeeId) From dbo.DailyFileDetails where DailyFileId=@DailyFileId AND    IsAtm =0 
+            RETURN ISNULL(@empsNums,0)
+             End");
+            Sql(@"ALTER TABLE dbo.DailyFiles ADD FileTotalAmount AS dbo.GetSumAmountDailyFiles(Id),
+                EmployeesNumber AS dbo.GetSumEmpsDailyFiles(Id),  
+EmployeesCashNumber AS dbo.GetSumEmpsCashDailyFiles(Id),
+FileTotalCashAmount AS dbo.GetSumCashAmountDailyFiles(Id)");
+            CreateTable(
+                "dbo.DailyFileDetails",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Net = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        DailyFileId = c.Int(nullable: false),
+                        EmployeeId = c.Int(nullable: false),
+                        HasData = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
+                .ForeignKey("dbo.DailyFiles", t => t.DailyFileId, cascadeDelete: true)
+                .Index(t => t.DailyFileId, name: "DailyFileIdIndex")
+                .Index(t => t.EmployeeId, name: "EmployeeIdIndex");
+            
+            CreateTable(
+                "dbo.DailyFileDetailsDatas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        DailyFileDetailsId = c.Int(nullable: false),
+                        AccountId = c.Int(nullable: false),
+                        Value = c.String(maxLength: 150),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Accounts", t => t.AccountId, cascadeDelete: true)
+                .ForeignKey("dbo.DailyFileDetails", t => t.DailyFileDetailsId, cascadeDelete: true)
+                .Index(t => t.DailyFileDetailsId)
+                .Index(t => t.AccountId);
+            
+            CreateTable(
+                "dbo.Accounts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Name = c.String(maxLength: 150),
+                        AccountId = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Accounts", t => t.AccountId)
+                .Index(t => t.AccountId, name: "AccountIdIndex");
+            
+            CreateTable(
+                "dbo.Employees",
+                c => new
+                    {
+                        Code = c.Int(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 150),
+                        Nickname = c.String(maxLength: 150),
+                        Gender = c.Int(),
+                        NationalId = c.String(maxLength: 50),
+                        PositionName = c.String(maxLength: 100),
+                        DepartmentId = c.Int(),
+                        Phone = c.String(maxLength: 100),
+                        Email = c.String(maxLength: 100),
+                        Sallary = c.Boolean(nullable: false),
+                        Other = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Code);
+            
+            CreateTable(
+                "dbo.IdentityRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.IdentityUserRoles",
+                c => new
+                    {
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        IdentityRole_Id = c.String(maxLength: 128),
+                        AspNetUser_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.RoleId, t.UserId })
+                .ForeignKey("dbo.IdentityRoles", t => t.IdentityRole_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.AspNetUser_Id)
+                .Index(t => t.IdentityRole_Id)
+                .Index(t => t.AspNetUser_Id);
+            
+            CreateTable(
+                "dbo.AspNetUsers",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Code = c.Int(nullable: false),
+                        NationalId = c.String(),
+                        Email = c.String(),
+                        EmailConfirmed = c.Boolean(nullable: false),
+                        PasswordHash = c.String(),
+                        SecurityStamp = c.String(),
+                        PhoneNumber = c.String(),
+                        PhoneNumberConfirmed = c.Boolean(nullable: false),
+                        TwoFactorEnabled = c.Boolean(nullable: false),
+                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEnabled = c.Boolean(nullable: false),
+                        AccessFailedCount = c.Int(nullable: false),
+                        UserName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.IdentityUserClaims",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
+                        ClaimType = c.String(),
+                        ClaimValue = c.String(),
+                        AspNetUser_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.AspNetUser_Id)
+                .Index(t => t.AspNetUser_Id);
+            
+            CreateTable(
+                "dbo.IdentityUserLogins",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        LoginProvider = c.String(),
+                        ProviderKey = c.String(),
+                        AspNetUser_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.AspNetUser_Id)
+                .Index(t => t.AspNetUser_Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropForeignKey("dbo.IdentityUserRoles", "AspNetUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.IdentityUserLogins", "AspNetUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.IdentityUserClaims", "AspNetUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.IdentityUserRoles", "IdentityRole_Id", "dbo.IdentityRoles");
+            DropForeignKey("dbo.DailyFiles", "DailyId", "dbo.Dailies");
+            DropForeignKey("dbo.DailyFileDetails", "DailyFileId", "dbo.DailyFiles");
+            DropForeignKey("dbo.DailyFileDetails", "EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.DailyFileDetailsDatas", "DailyFileDetailsId", "dbo.DailyFileDetails");
+            DropForeignKey("dbo.DailyFileDetailsDatas", "AccountId", "dbo.Accounts");
+            DropForeignKey("dbo.Accounts", "AccountId", "dbo.Accounts");
+            DropForeignKey("dbo.ComplainDetails", "ComplainId", "dbo.Complains");
+            DropIndex("dbo.IdentityUserLogins", new[] { "AspNetUser_Id" });
+            DropIndex("dbo.IdentityUserClaims", new[] { "AspNetUser_Id" });
+            DropIndex("dbo.IdentityUserRoles", new[] { "AspNetUser_Id" });
+            DropIndex("dbo.IdentityUserRoles", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Accounts", "AccountIdIndex");
+            DropIndex("dbo.DailyFileDetailsDatas", new[] { "AccountId" });
+            DropIndex("dbo.DailyFileDetailsDatas", new[] { "DailyFileDetailsId" });
+            DropIndex("dbo.DailyFileDetails", "EmployeeIdIndex");
+            DropIndex("dbo.DailyFileDetails", "DailyFileIdIndex");
+            DropIndex("dbo.DailyFiles", new[] { "DailyId" });
+            DropIndex("dbo.ComplainDetails", new[] { "ComplainId" });
+            DropTable("dbo.IdentityUserLogins");
+            DropTable("dbo.IdentityUserClaims");
+            DropTable("dbo.AspNetUsers");
+            DropTable("dbo.IdentityUserRoles");
+            DropTable("dbo.IdentityRoles");
+            DropTable("dbo.Employees");
+            DropTable("dbo.Accounts");
+            DropTable("dbo.DailyFileDetailsDatas");
+            DropTable("dbo.DailyFileDetails");
+            DropTable("dbo.DailyFiles");
+            DropTable("dbo.Dailies");
+            DropTable("dbo.Complains");
+            DropTable("dbo.ComplainDetails");
+        }
+    }
+}

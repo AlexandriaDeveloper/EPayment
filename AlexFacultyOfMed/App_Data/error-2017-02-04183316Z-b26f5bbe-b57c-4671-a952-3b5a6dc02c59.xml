@@ -1,0 +1,168 @@
+﻿<error errorId="b26f5bbe-b57c-4671-a952-3b5a6dc02c59" host="WIN-P6FPLTJH1HV" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="App_Web_jrlx2qva" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at ASP._Page_Views_Home_Contact_cshtml.Execute() in C:\Users\Seagull\documents\visual studio 2015\Projects\EPayment\AlexFacultyOfMed\Views\Home\Contact.cshtml:line 5&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.StartPage.RunPage()&#xD;&#xA;   at System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)&#xD;&#xA;   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="seaagull@hotmail.com" time="2017-02-04T18:33:16.9485470Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=qkr8a3QvAV0hinHgGxKparK9aBXr4PlLHqsYnHt7Q-eTdgCQOZ3V241YaDWz9J2NFDQFsqz78yZJV8-1gn_3kQdxxW16H5QxGnu_dG6TeK41; MyAuthCookies=RIubxtLw_MxxGOnXKyZio4DcDzu9R4XA6ZkOmuYndMW9W4fFGb-oWOHfLE2GMWQjlsNir_mj2nreNwcZLLv9ATr3-RQK6m1S9b_-iFgtxToJUINHqOlLpEFi7gWD-wqJpXjKrYie0eA9Dl1ffsP47kj4C7KVo3vZc0UImXKUMEntbPs20qGrsEPigNZh8PZl9jdzZmyV2kwurXB6-i2xgUHmMJH4uU_I7vmFsXySw0NKaCiaeqDJ-DZq-8UGycHcFCfsbqWrD762sWir8WIfWP9hZk3qSixKw-tVdR0fAioCKBqQ6-4W01ORf5YBP3ZNjiymygQUaUA9GbZZfGQEH6g3XylmbSzSAUN61xzfWn1Ofny6lSooXc5I0i8uZm7TUT00zstbIX-kv6e-QNs4jKo89JcVgm9A7D_quzZTzUIS1T7hcOyt7Y6jIsot6dAbpZ_a3TPPzvedJrBg5FCSBIJy-AQ_sFTq2fMYlOVYDllvwtt4RIfyfFt_haPnz1D8DpYgzD3paMEPrMD2fYuZtqfovpBitEfYJczVMSCzDRSioUNikEVgb2qT2M4SzIDjiDTuPpts-jS7Rl0bNy4o4SaGXDu1kFdgFiX0opgSO1o&#xD;&#xA;HTTP_HOST:localhost:44394&#xD;&#xA;HTTP_REFERER:https://localhost:44394/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=qkr8a3QvAV0hinHgGxKparK9aBXr4PlLHqsYnHt7Q-eTdgCQOZ3V241YaDWz9J2NFDQFsqz78yZJV8-1gn_3kQdxxW16H5QxGnu_dG6TeK41; MyAuthCookies=RIubxtLw_MxxGOnXKyZio4DcDzu9R4XA6ZkOmuYndMW9W4fFGb-oWOHfLE2GMWQjlsNir_mj2nreNwcZLLv9ATr3-RQK6m1S9b_-iFgtxToJUINHqOlLpEFi7gWD-wqJpXjKrYie0eA9Dl1ffsP47kj4C7KVo3vZc0UImXKUMEntbPs20qGrsEPigNZh8PZl9jdzZmyV2kwurXB6-i2xgUHmMJH4uU_I7vmFsXySw0NKaCiaeqDJ-DZq-8UGycHcFCfsbqWrD762sWir8WIfWP9hZk3qSixKw-tVdR0fAioCKBqQ6-4W01ORf5YBP3ZNjiymygQUaUA9GbZZfGQEH6g3XylmbSzSAUN61xzfWn1Ofny6lSooXc5I0i8uZm7TUT00zstbIX-kv6e-QNs4jKo89JcVgm9A7D_quzZTzUIS1T7hcOyt7Y6jIsot6dAbpZ_a3TPPzvedJrBg5FCSBIJy-AQ_sFTq2fMYlOVYDllvwtt4RIfyfFt_haPnz1D8DpYgzD3paMEPrMD2fYuZtqfovpBitEfYJczVMSCzDRSioUNikEVgb2qT2M4SzIDjiDTuPpts-jS7Rl0bNy4o4SaGXDu1kFdgFiX0opgSO1o&#xD;&#xA;Host: localhost:44394&#xD;&#xA;Referer: https://localhost:44394/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/4/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Seagull\documents\visual studio 2015\Projects\EPayment\AlexFacultyOfMed\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="4" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/4" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Home/Contact" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Seagull\documents\visual studio 2015\Projects\EPayment\AlexFacultyOfMed\Home\Contact" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="22893" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Home/Contact" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44394" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Home/Contact" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=qkr8a3QvAV0hinHgGxKparK9aBXr4PlLHqsYnHt7Q-eTdgCQOZ3V241YaDWz9J2NFDQFsqz78yZJV8-1gn_3kQdxxW16H5QxGnu_dG6TeK41; MyAuthCookies=RIubxtLw_MxxGOnXKyZio4DcDzu9R4XA6ZkOmuYndMW9W4fFGb-oWOHfLE2GMWQjlsNir_mj2nreNwcZLLv9ATr3-RQK6m1S9b_-iFgtxToJUINHqOlLpEFi7gWD-wqJpXjKrYie0eA9Dl1ffsP47kj4C7KVo3vZc0UImXKUMEntbPs20qGrsEPigNZh8PZl9jdzZmyV2kwurXB6-i2xgUHmMJH4uU_I7vmFsXySw0NKaCiaeqDJ-DZq-8UGycHcFCfsbqWrD762sWir8WIfWP9hZk3qSixKw-tVdR0fAioCKBqQ6-4W01ORf5YBP3ZNjiymygQUaUA9GbZZfGQEH6g3XylmbSzSAUN61xzfWn1Ofny6lSooXc5I0i8uZm7TUT00zstbIX-kv6e-QNs4jKo89JcVgm9A7D_quzZTzUIS1T7hcOyt7Y6jIsot6dAbpZ_a3TPPzvedJrBg5FCSBIJy-AQ_sFTq2fMYlOVYDllvwtt4RIfyfFt_haPnz1D8DpYgzD3paMEPrMD2fYuZtqfovpBitEfYJczVMSCzDRSioUNikEVgb2qT2M4SzIDjiDTuPpts-jS7Rl0bNy4o4SaGXDu1kFdgFiX0opgSO1o" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44394" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44394/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="qkr8a3QvAV0hinHgGxKparK9aBXr4PlLHqsYnHt7Q-eTdgCQOZ3V241YaDWz9J2NFDQFsqz78yZJV8-1gn_3kQdxxW16H5QxGnu_dG6TeK41" />
+    </item>
+    <item name="MyAuthCookies">
+      <value string="RIubxtLw_MxxGOnXKyZio4DcDzu9R4XA6ZkOmuYndMW9W4fFGb-oWOHfLE2GMWQjlsNir_mj2nreNwcZLLv9ATr3-RQK6m1S9b_-iFgtxToJUINHqOlLpEFi7gWD-wqJpXjKrYie0eA9Dl1ffsP47kj4C7KVo3vZc0UImXKUMEntbPs20qGrsEPigNZh8PZl9jdzZmyV2kwurXB6-i2xgUHmMJH4uU_I7vmFsXySw0NKaCiaeqDJ-DZq-8UGycHcFCfsbqWrD762sWir8WIfWP9hZk3qSixKw-tVdR0fAioCKBqQ6-4W01ORf5YBP3ZNjiymygQUaUA9GbZZfGQEH6g3XylmbSzSAUN61xzfWn1Ofny6lSooXc5I0i8uZm7TUT00zstbIX-kv6e-QNs4jKo89JcVgm9A7D_quzZTzUIS1T7hcOyt7Y6jIsot6dAbpZ_a3TPPzvedJrBg5FCSBIJy-AQ_sFTq2fMYlOVYDllvwtt4RIfyfFt_haPnz1D8DpYgzD3paMEPrMD2fYuZtqfovpBitEfYJczVMSCzDRSioUNikEVgb2qT2M4SzIDjiDTuPpts-jS7Rl0bNy4o4SaGXDu1kFdgFiX0opgSO1o" />
+    </item>
+  </cookies>
+</error>

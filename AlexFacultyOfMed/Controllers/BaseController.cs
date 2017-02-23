@@ -6,26 +6,26 @@ namespace AlexFacultyOfMed.Controllers
 {
     public class BaseController : Controller
     {
-        private EmailService.ApplictaionRoleManager _roleManager;
-        private EmailService.ApplicationSignInManager _signInManager;
-        private EmailService.ApplicationUserManager _userManager;
+        private ApplictaionRoleManager _roleManager;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
 
-        public EmailService.ApplicationSignInManager SignInManager
+        public ApplicationSignInManager SignInManager
         {
-            get { return _signInManager ?? HttpContext.GetOwinContext().Get<EmailService.ApplicationSignInManager>(); }
+            get { return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); }
             private set { _signInManager = value; }
         }
 
-        public EmailService.ApplicationUserManager UserManager
+        public ApplicationUserManager UserManager
         {
-            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<EmailService.ApplicationUserManager>(); }
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
             private set { _userManager = value; }
         }
 
-        public EmailService.ApplictaionRoleManager RoleManager
+        public ApplictaionRoleManager RoleManager
         {
-            get { return _roleManager ?? HttpContext.GetOwinContext().Get<EmailService.ApplictaionRoleManager>(); }
+            get { return _roleManager ?? HttpContext.GetOwinContext().Get<ApplictaionRoleManager>(); }
             private set { _roleManager = value; }
         }
 

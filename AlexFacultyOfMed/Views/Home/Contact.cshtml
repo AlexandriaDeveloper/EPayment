@@ -9,7 +9,10 @@
 <table class="table  table-striped table-hover table-responsive">
     <thead>
     <tr class="info">
-        <td class="col-xs-6">
+        <td class="col-xs-2">
+           
+        </td>
+        <td class="col-xs-4">
             البيان
         </td>
         <td class="col-xs-2">
@@ -31,7 +34,20 @@
     @foreach (var details in Model.PaymentData)
     {
         <tr>
+            <td>
+                @if (details.DailyFileDetails.HasData) {
+                    <a href="/Home/FileData/@details.DailyFileDetails.Id" class="btn btn-primary btn-sm">
+                        تفاصيل
+                    </a>
+                }
+                else {
+                    <button class="btn btn-primary btn-sm">
+                        لا يوجد تفاصيل
 
+                    </button>
+                }
+
+            </td>
             <td> @details.DailyFile.Name </td>
             <td>
                 <i class="fa fa-money"></i>

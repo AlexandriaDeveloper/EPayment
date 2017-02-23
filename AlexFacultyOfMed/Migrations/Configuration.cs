@@ -22,11 +22,11 @@ namespace AlexFacultyOfMed.Migrations
             //    System.Diagnostics.Debugger.Launch();
 
             //}
-            FillData();
+           FillData();
         }
 
 
-        private async void FillData()
+        private  void FillData()
         {
             try
             {
@@ -65,9 +65,9 @@ namespace AlexFacultyOfMed.Migrations
                 IdentityRole role3 = null;
                 if (roles == null)
                 {
-                    role1 = new IdentityRole {Name = UserRoles.Admin};
-                    role2 = new IdentityRole {Name = UserRoles.PowerUser};
-                    role3 = new IdentityRole {Name = UserRoles.User};
+                    role1 = new IdentityRole { Name = UserRoles.Admin };
+                    role2 = new IdentityRole { Name = UserRoles.PowerUser };
+                    role3 = new IdentityRole { Name = UserRoles.User };
                     var resultrole1 = rolemanager.CreateAsync(role1).Result;
                     var resultrole2 = rolemanager.CreateAsync(role2).Result;
                     var resultrole3 = rolemanager.CreateAsync(role3).Result;

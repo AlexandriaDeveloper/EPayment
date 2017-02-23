@@ -1,0 +1,195 @@
+﻿<error errorId="14637ac0-7c52-4de7-9cb2-cf6972a4706e" host="WIN-P6FPLTJH1HV" type="System.Web.Mvc.HttpAntiForgeryException" message="The provided anti-forgery token was meant for a different claims-based user than the current user." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The provided anti-forgery token was meant for a different claims-based user than the current user.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)" user="seaagull@hotmail.com" time="2017-02-14T21:00:33.1496891Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:220&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=TFW4jP1yW1FDFkchezzn5cwSS-LUP4uovKaAjWoxLawTDaIXR-D-9pmi43IL10Jk1GmJ-dHEocX3G_-BL459PR92uKJbedqdIyGTzt44--Q1; MyAuthCookies=kEzfhR6h2uyu_Heh6NsurbJYrcXDMcNIVc9plbTgU0IytKjwX_8c_yPPXIoO-B_wx7dQ1L9ix2NGKV3sQL4edPKmJdGOe8sn6Xj8FT_F-TKwMbmchbLdgS-lBDXP9CNBOIRSaAPIVr_8Rb6e5aW9r1vHXs1cJFDNEnmIb5BVwfWyQPlZSbkuPxCNhlEwsv5DxfvLKdh10kBmorYnfaAaUWjkl1jmpVIsIgy-I3loW7ZlazpVg20_j90qxtYUnFbBGDJj6phsoVSCqHBF87KClzlQk9mz7ci8Di0m4ON4ts9d2wpJaediXlk8k4rzop6_OQcU5YQgXLTO6xlTJ9Va2WJPZxtW7XZ3q7sB1s4O5hB5d-Ia_UiM9KryuGoskA3pQdHXKrkEAaTaMo_tx0Zq0qkFPqWNo6EWEJBDDkWnw22LiY0yphfuPn4z2C5zwA_Ij8jhJvFbZd6KUWdsk6g5FGxfqUqeFs70oN_BIwnzflKB6gxJy4IzDg_4ureGBO0HCLKdA3yP1lND6Oa94NX0BKOygg8X2VEtieVkaknt4ivCrVgvKMk3STgnJljUfVxkOy4i0ZiCnobXxgNRf6x4NPtnRHYwchqDwyRh-3tqiCI&#xD;&#xA;HTTP_HOST:localhost:1234&#xD;&#xA;HTTP_REFERER:http://localhost:1234/Account/Login&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:1234&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 220&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=TFW4jP1yW1FDFkchezzn5cwSS-LUP4uovKaAjWoxLawTDaIXR-D-9pmi43IL10Jk1GmJ-dHEocX3G_-BL459PR92uKJbedqdIyGTzt44--Q1; MyAuthCookies=kEzfhR6h2uyu_Heh6NsurbJYrcXDMcNIVc9plbTgU0IytKjwX_8c_yPPXIoO-B_wx7dQ1L9ix2NGKV3sQL4edPKmJdGOe8sn6Xj8FT_F-TKwMbmchbLdgS-lBDXP9CNBOIRSaAPIVr_8Rb6e5aW9r1vHXs1cJFDNEnmIb5BVwfWyQPlZSbkuPxCNhlEwsv5DxfvLKdh10kBmorYnfaAaUWjkl1jmpVIsIgy-I3loW7ZlazpVg20_j90qxtYUnFbBGDJj6phsoVSCqHBF87KClzlQk9mz7ci8Di0m4ON4ts9d2wpJaediXlk8k4rzop6_OQcU5YQgXLTO6xlTJ9Va2WJPZxtW7XZ3q7sB1s4O5hB5d-Ia_UiM9KryuGoskA3pQdHXKrkEAaTaMo_tx0Zq0qkFPqWNo6EWEJBDDkWnw22LiY0yphfuPn4z2C5zwA_Ij8jhJvFbZd6KUWdsk6g5FGxfqUqeFs70oN_BIwnzflKB6gxJy4IzDg_4ureGBO0HCLKdA3yP1lND6Oa94NX0BKOygg8X2VEtieVkaknt4ivCrVgvKMk3STgnJljUfVxkOy4i0ZiCnobXxgNRf6x4NPtnRHYwchqDwyRh-3tqiCI&#xD;&#xA;Host: localhost:1234&#xD;&#xA;Referer: http://localhost:1234/Account/Login&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;Origin: http://localhost:1234&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/6/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Seagull\Documents\Visual Studio 2015\Projects\EPayment\AlexFacultyOfMed\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="220" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="6" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/6" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Account/Login" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Seagull\Documents\Visual Studio 2015\Projects\EPayment\AlexFacultyOfMed\Account\Login" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="42625" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Account/Login" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="1234" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Account/Login" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="220" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=TFW4jP1yW1FDFkchezzn5cwSS-LUP4uovKaAjWoxLawTDaIXR-D-9pmi43IL10Jk1GmJ-dHEocX3G_-BL459PR92uKJbedqdIyGTzt44--Q1; MyAuthCookies=kEzfhR6h2uyu_Heh6NsurbJYrcXDMcNIVc9plbTgU0IytKjwX_8c_yPPXIoO-B_wx7dQ1L9ix2NGKV3sQL4edPKmJdGOe8sn6Xj8FT_F-TKwMbmchbLdgS-lBDXP9CNBOIRSaAPIVr_8Rb6e5aW9r1vHXs1cJFDNEnmIb5BVwfWyQPlZSbkuPxCNhlEwsv5DxfvLKdh10kBmorYnfaAaUWjkl1jmpVIsIgy-I3loW7ZlazpVg20_j90qxtYUnFbBGDJj6phsoVSCqHBF87KClzlQk9mz7ci8Di0m4ON4ts9d2wpJaediXlk8k4rzop6_OQcU5YQgXLTO6xlTJ9Va2WJPZxtW7XZ3q7sB1s4O5hB5d-Ia_UiM9KryuGoskA3pQdHXKrkEAaTaMo_tx0Zq0qkFPqWNo6EWEJBDDkWnw22LiY0yphfuPn4z2C5zwA_Ij8jhJvFbZd6KUWdsk6g5FGxfqUqeFs70oN_BIwnzflKB6gxJy4IzDg_4ureGBO0HCLKdA3yP1lND6Oa94NX0BKOygg8X2VEtieVkaknt4ivCrVgvKMk3STgnJljUfVxkOy4i0ZiCnobXxgNRf6x4NPtnRHYwchqDwyRh-3tqiCI" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:1234" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:1234/Account/Login" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:1234" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="9sJktwemIG9GBQ9ZnSjI8ejWGFV-G1vYeesI_NaiMOuc1Fw8w9L3TRRZDaBmuH_kOCfx5w6AcxDAc-uA5N6-IC9AoYpkFFUlTFEscDF7v3g1" />
+    </item>
+    <item name="Email">
+      <value string="seaagull@hotmail.com" />
+    </item>
+    <item name="Password">
+      <value string="fr3shstart#" />
+    </item>
+    <item name="RememberMe">
+      <value string="true" />
+      <value string="false" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="TFW4jP1yW1FDFkchezzn5cwSS-LUP4uovKaAjWoxLawTDaIXR-D-9pmi43IL10Jk1GmJ-dHEocX3G_-BL459PR92uKJbedqdIyGTzt44--Q1" />
+    </item>
+    <item name="MyAuthCookies">
+      <value string="kEzfhR6h2uyu_Heh6NsurbJYrcXDMcNIVc9plbTgU0IytKjwX_8c_yPPXIoO-B_wx7dQ1L9ix2NGKV3sQL4edPKmJdGOe8sn6Xj8FT_F-TKwMbmchbLdgS-lBDXP9CNBOIRSaAPIVr_8Rb6e5aW9r1vHXs1cJFDNEnmIb5BVwfWyQPlZSbkuPxCNhlEwsv5DxfvLKdh10kBmorYnfaAaUWjkl1jmpVIsIgy-I3loW7ZlazpVg20_j90qxtYUnFbBGDJj6phsoVSCqHBF87KClzlQk9mz7ci8Di0m4ON4ts9d2wpJaediXlk8k4rzop6_OQcU5YQgXLTO6xlTJ9Va2WJPZxtW7XZ3q7sB1s4O5hB5d-Ia_UiM9KryuGoskA3pQdHXKrkEAaTaMo_tx0Zq0qkFPqWNo6EWEJBDDkWnw22LiY0yphfuPn4z2C5zwA_Ij8jhJvFbZd6KUWdsk6g5FGxfqUqeFs70oN_BIwnzflKB6gxJy4IzDg_4ureGBO0HCLKdA3yP1lND6Oa94NX0BKOygg8X2VEtieVkaknt4ivCrVgvKMk3STgnJljUfVxkOy4i0ZiCnobXxgNRf6x4NPtnRHYwchqDwyRh-3tqiCI" />
+    </item>
+  </cookies>
+</error>
